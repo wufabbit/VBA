@@ -1,0 +1,36 @@
+Sub 分表()
+
+'min开始行数 max结束行数  L=复制长度 name1开始名字 name2结束名字
+Dim min As Integer, max As Integer, l As Integer
+Dim name1 As String, name2 As String
+
+min = 2
+max = 2
+name1 = Range("b2").Value
+name2 = Range("b2").Value
+
+Range("a:i").Sort [c1], 1
+Range("a:i").Sort [b1], 1
+
+
+Do While Range("i" & max).Value > 0 '因为max做判断，所以2开始判断
+    Do While name1 = name2
+    max = max + 1
+    name2 = Range("b" & max).Value
+    Loop
+    
+    l = max - min + 1
+    Range("b" & min, "l" & max - 1).Copy Sheets(name1).Range("b2")  '复制单元格
+    Sheets(name1).Range("l" & l + 3).Value = "=sum(l1:l" & max + 2 & ")" '分表进行合计
+           
+    
+    name1 = name2
+    min = max
+Loop
+
+Range("A:I").Sort [A1], 1
+
+End Sub
+
+
+  
