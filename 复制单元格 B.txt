@@ -1,7 +1,7 @@
-Sub ·Ö±í()
+ï»¿Sub åˆ†è¡¨()
 
 
-'min ×Ü±í¿ªÊ¼ĞĞÊı max ×Ü±í½áÊøĞĞÊı name1 ¹¤×÷±íÃû×Ö all ¸´ÖÆ×ÜĞĞÊı s=·Ö±íºÏ¼ÆÊı name1 name2¿ªÊ¼Ãû×Ö ½áÊøÃû×Ö
+'min æ€»è¡¨å¼€å§‹è¡Œæ•° max æ€»è¡¨ç»“æŸè¡Œæ•° name1 å·¥ä½œè¡¨åå­— all å¤åˆ¶æ€»è¡Œæ•° s=åˆ†è¡¨åˆè®¡æ•° name1 name2å¼€å§‹åå­— ç»“æŸåå­—
 
 
 Dim min As Integer, max As Integer, all As Integer, m As Integer
@@ -16,9 +16,9 @@ name1 = Range("b" & min).Value
 
 
 
-'µ¥¼ÛÓĞÊı×Ö½øĞĞºÏ¼Æ£¬·ñÔò½áÊø
+'å•ä»·æœ‰æ•°å­—è¿›è¡Œåˆè®¡ï¼Œå¦åˆ™ç»“æŸ
 Do While Range("H" & min).Value > 0
-    'Ãû×ÖÏàÍ¬ÔòĞĞÊıµş¼Ó
+    'åå­—ç›¸åŒåˆ™è¡Œæ•°å åŠ 
     Do
     max = max + 1
     name2 = Range("b" & max).Value
@@ -28,26 +28,26 @@ Do While Range("H" & min).Value > 0
     If max - min = 1 Then
     Range("b" & min, "l" & min).Copy Sheets(name1).Range("a2")
     Else
-    Range("b" & min, "l" & max - 1).Copy Sheets(name1).Range("a2") '¸´ÖÆÕ³Ìù
+    Range("b" & min, "l" & max - 1).Copy Sheets(name1).Range("a2") 'å¤åˆ¶ç²˜è´´
     End If
     
     
         
-    '»»ÏÂÒ»¸öÃû×Ö ÖØ¸´¸´ÖÆÂÖ
+    'æ¢ä¸‹ä¸€ä¸ªåå­— é‡å¤å¤åˆ¶è½®
     min = max
     max = max + 1
     s = s + 1
-    name1 = Sheets("×Ü±í").Range("b" & min).Value
+    name1 = Sheets("æ€»è¡¨").Range("b" & min).Value
 Loop
 
-'×Ü±í»ã×Ü·Ö±íÊı
-'Í£Ö¹Ñ­»·ºó
-Range("i" & max + 5).Value = "=sum(ÃÅµêÁĞ±í!b2:b10)"
+'æ€»è¡¨æ±‡æ€»åˆ†è¡¨æ•°
+'åœæ­¢å¾ªç¯å
+Range("i" & max + 5).Value = "=sum(é—¨åº—åˆ—è¡¨!b2:b10)"
 name1 = Range("b" & min).Value
 
 
-'Ê×ĞĞÔö¼Ó 1.ÃÅµêÅÅĞò 2.Ãû×ÖË³Ğò 3.É¾³ı·Ö±íÄÚÈİ
-'Ä©Î²Ôö¼Ó 1.ĞòºÅË³Ğò
+'é¦–è¡Œå¢åŠ  1.é—¨åº—æ’åº 2.åå­—é¡ºåº 3.åˆ é™¤åˆ†è¡¨å†…å®¹
+'æœ«å°¾å¢åŠ  1.åºå·é¡ºåº
 
 
 End Sub
