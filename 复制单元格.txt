@@ -21,9 +21,7 @@ Do While Range("i" & max).Value > 0 '因为max做判断，所以2开始判断
     
     l = max - min + 1
     Range("b" & min, "l" & max - 1).Copy Sheets(name1).Range("b2")  '复制单元格
-    Sheets(name1).Range("l" & l + 3).Value = "=sum(l1:l" & max + 2 & ")" '分表进行合计
-           
-    
+    Sheets(name1).Range("l" & l + 3).Value = "=sum(l1:l" & max + 2 & ")" '分表进行合计      
     name1 = name2
     min = max
 Loop
