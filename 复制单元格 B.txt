@@ -1,0 +1,58 @@
+Sub 分表()
+
+
+'min 总表开始行数 max 总表结束行数 name1 工作表名字 all 复制总行数 s=分表合计数 name1 name2开始名字 结束名字
+
+
+Dim min As Integer, max As Integer, all As Integer, m As Integer
+Dim s As Long
+Dim name1 As String, name2 As String, gezi As String
+
+
+min = 2
+max = 2
+Workbooks(1).Activate
+name1 = Range("b" & min).Value
+
+
+
+'单价有数字进行合计，否则结束
+Do While Range("H" & min).Value > 0
+    '名字相同则行数叠加
+    Do
+    max = max + 1
+    name2 = Range("b" & max).Value
+    Loop While name1 = name2
+       
+    
+    If max - min = 1 Then
+    Range("b" & min, "l" & min).Copy Sheets(name1).Range("a2")
+    Else
+    Range("b" & min, "l" & max - 1).Copy Sheets(name1).Range("a2") '复制粘贴
+    End If
+    
+    
+        
+    '换下一个名字 重复复制轮
+    min = max
+    max = max + 1
+    s = s + 1
+    name1 = Sheets("总表").Range("b" & min).Value
+Loop
+
+'总表汇总分表数
+'停止循环后
+Range("i" & max + 5).Value = "=sum(门店列表!b2:b10)"
+name1 = Range("b" & min).Value
+
+
+'首行增加 1.门店排序 2.名字顺序 3.删除分表内容
+'末尾增加 1.序号顺序
+
+
+End Sub
+
+
+
+
+
